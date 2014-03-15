@@ -1,9 +1,11 @@
 my-benchmark
 ============
 
-## 测试不同解决方案之间的性能差异。
+目的: 测试不同解决方案之间的性能差异。
 
-目前主要关注语言为：PHP, JavaScript, Python, Go.
+背景
+-------
+* 目前主要关注语言为：PHP, JavaScript, Python, Go.
 
 任务列表
 -------
