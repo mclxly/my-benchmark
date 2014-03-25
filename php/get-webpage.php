@@ -1,18 +1,19 @@
 <?php
 // URLs we want to retrieve
 $urls = array(
-    'http://sale.jd.com/act/QH8fzgwP7ySX.html', 
+    'http://sale.jd.com/act/QH8fzgwP7ySX.html',
     'http://sale.jd.com/act/OGQ04oZv6RM.html'
 );
 
 $pid = 493442;
-for ($i=0; $i < 11; $i++) { 
+for ($i=0; $i < 11; $i++) {
 	$pid += $i;
 	$url = "http://item.jd.com/$pid.html";
 	$urls[] = $url;
+    //echo $url;
 	//echo $url;exit;
 }
- 
+
 // initialize the multihandler
 $mh = curl_multi_init();
 
@@ -28,11 +29,11 @@ foreach ($urls as $key => $url) {
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_FOLLOWLOCATION => true
     ));
- 
+
     // add channel to multihandler
     curl_multi_add_handle($mh, $channels[$key]);
 }
- 
+
 // execute - if there is an active connection then keep looping
 $active = null;
 do {
@@ -64,7 +65,7 @@ foreach ($channels as $chan) {
 // Summary
 echo "Execution time(seconds): ".sprintf('%f', $time).PHP_EOL;
 echo 'Total download size: '.$download_size.PHP_EOL;
- 
+
 // close the multihandler
 curl_multi_close($mh);
 ?>
